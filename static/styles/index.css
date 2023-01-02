@@ -1,0 +1,87 @@
+body {
+    margin-top: 20%;
+    background: #424343;
+    font-family: "Verdana", sans-serif;
+}
+
+.centerDiv {
+    display:flex;
+    justify-content: center;
+}
+
+.secondCenterDiv {
+    display:flex;
+    justify-content: center;
+}
+
+.inputBox {
+    border: 0;
+    border-radius: 0;
+    border-width: 0;
+    height: 1.4rem;
+    margin-right: 0;
+    width: 25rem;
+}
+
+.submitButton {
+    background: black;
+    border-radius: 0;
+    border-width: 0;
+    border: 0;
+    height: 1.6rem;
+    margin-left: 0;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    color: black;
+}
+
+.previous {
+    color: black;
+}
+
+.next {
+    background: #04AA6D;
+    color: white;
+}
+
+.round {
+    border-radius: 0;
+    border-width: 0;
+    border-color: none;
+    height: 2rem;
+    width: 2rem;
+}
+
+.round:hover {
+    background: #02734a;
+}
+
+.delete {
+    padding-top: 1.3rem;
+    margin-left: 0;
+    border: 0;
+    border-radius: 0;
+    border-width: 0;
+    color: transparent;
+    background: transparent;
+    background-image: url("../images/trashcan.png");
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    width: 1.7rem;
+    height: 1.8rem;
+    font-size: 0%;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
