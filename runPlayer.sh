@@ -17,4 +17,4 @@ export FLASK_APP=app.py
 echo "${GREEN}Making videos directory${NC}"
 mkdir videos
 
-flask run --host=0.0.0.0
+python3 -m flask run --host=0.0.0.0
