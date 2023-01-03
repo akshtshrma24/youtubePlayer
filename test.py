@@ -7,7 +7,7 @@ vlc_instance = vlc.Instance()
 player = vlc_instance.media_player_new()
     
 # creating a media
-media = vlc_instance.media_new("./videos/cuttingHair")
+media = vlc_instance.media_new("./videos/cuttinghair")
     
 # setting media to the player
 player.set_media(media)
