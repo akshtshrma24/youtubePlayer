@@ -2,8 +2,11 @@ from flask import Flask, render_template, request
 
 from mergeHandler import * 
 from directoryHandler import * 
+from vlcHandler import * 
 
 app = Flask(__name__, template_folder="./frontend")
+
+
 
 @app.route('/')
 def hello_world():
@@ -23,8 +26,14 @@ def manage():
     return render_template('manage.html', dictionary=dictionary)
 
 @app.route('/manage', methods=['POST'])
-def delete_video():
-    fileName = request.form['submit_button']
-    delete_file(fileName)
-    dictionary = get_file_names()
-    return render_template('manage.html', dictionary=dictionary)
+def manage_video():
+    if('delete_button' in request.form):
+        fileName = request.form['delete_button']
+        delete_file(fileName)
+        dictionary = get_file_names()
+        return render_template('manage.html', dictionary=dictionary)
+    else:
+        fileName = request.form['play_button']
+        play_song(fileName)
+        dictionary = get_file_names()
+        return render_template('manage.html', dictionary=dictionary)

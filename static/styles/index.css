@@ -85,3 +85,25 @@ a:hover {
     cursor: pointer;
 }
 
+.play {
+    padding-top: 1.3rem;
+    margin-left: 0;
+    border: 0;
+    border-radius: 0;
+    border-width: 0;
+    color: transparent;
+    background: transparent;
+    background-image: url("../images/playbutton.png");
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    width: 1.7rem;
+    height: 1.8rem;
+    font-size: 0%;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.play:hover {
+    cursor: pointer;
+}
+
