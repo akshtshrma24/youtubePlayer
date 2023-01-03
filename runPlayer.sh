@@ -6,6 +6,9 @@ export NC='\033[0m'
 echo "${GREEN}Installing ffmpeg${NC}"
 sudo apt install ffmpeg
 
+echo "${GREEN}Installing vlc${NC}"
+sudo apt install -y vlc
+
 echo "${GREEN}Installing pip${NC}"
 sudo apt install python3-pip
 
