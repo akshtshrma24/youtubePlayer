@@ -27,13 +27,16 @@ def manage():
 
 @app.route('/manage', methods=['POST'])
 def manage_video():
+    dictionary = get_file_names()
     if('delete_button' in request.form):
         fileName = request.form['delete_button']
         delete_file(fileName)
-        dictionary = get_file_names()
+        return render_template('manage.html', dictionary=dictionary)
+    elif('play_button' in request.form):
+        fileName = request.form['play_button']
+        play_vlc(fileName)
         return render_template('manage.html', dictionary=dictionary)
     else:
-        fileName = request.form['play_button']
-        play_song(fileName)
-        dictionary = get_file_names()
+        fileName = request.form['play_playlist_button']
+        play_vlc(fileName)
         return render_template('manage.html', dictionary=dictionary)

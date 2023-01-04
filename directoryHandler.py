@@ -12,7 +12,7 @@ def is_in_videos(link, playlistName=None):
     title = "./videos/" + playlistName + dw.get_title(link).replace("(","").replace(")","").replace(" ", "") + ".mp4"
     return os.path.isfile(title)
 
-#Returns the titles of the playlists
+# Returns a dictionary of all the playlists and the the songs inside of them
 
 def get_file_names():    
     directories = []
@@ -34,4 +34,11 @@ def delete_file(file):
     except OSError as error:
         print(error)
 
+# Returns an array of all the .mp4 files inside the 
+
+def get_songs(path):
+    mylist = os.listdir(path)
+    for element in mylist:
+        if(".mp4" not in element): mylist.remove(element)
+    return mylist
 

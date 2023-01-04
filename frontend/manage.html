@@ -15,7 +15,13 @@
     <div>
         {% for key in dictionary %}
             <!-- <select for="{{ key }}"> {{ key }}</label> -->
-            <h1> {{ key }} </h1>
+            <h1>
+                 {{ key }} 
+                 <form method="POST">
+                    <input class="delete" type="submit" name="delete_button" value="{{ key }}/">
+                    <input class="play" type="submit" name="play_playlist_button" value="{{ key }}">
+                </form>
+            </h1>
             {% for values in dictionary[key] %}
                 <!-- <option value="{{ values }}"> {{ values }} </option> -->
                 <div class="fileList">
