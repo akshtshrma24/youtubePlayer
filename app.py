@@ -28,6 +28,7 @@ def manage():
 
 @app.route('/manage', methods=['POST'])
 def manage_video():
+    os.system("killall vlc")
     dictionary = get_file_names()
     if ('delete_button' in request.form):
         fileName = request.form['delete_button']

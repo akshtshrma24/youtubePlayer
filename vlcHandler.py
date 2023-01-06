@@ -38,7 +38,6 @@ def play_playlist(directory, songIndex):
 # skips the song
 
 def next():
-    os.system("killall vlc")
     try:
         currentDirectory
     except NameError:
@@ -51,7 +50,6 @@ def next():
 # goes back a song 
 
 def previous():
-    os.system("killall vlc")
     try:
         currentDirectory
     except NameError:
