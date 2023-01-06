@@ -8,15 +8,19 @@ class ffmpeg:
         os.system(
             "ffmpeg -i {} -vn -ab 128k -ar 44100 -y audio.mp3 >/dev/null 2>&1".format(
                 audio.replace(
-                    "(", "").replace(
-                    ")", "")))
+                    "(",
+                    "").replace(
+                    ")",
+                    "")))
         os.system("rm -rf audio.webm")
         return "audio.mp3"
 
-    # stitches the video and audio together if it is in playlist        
+    # stitches the video and audio together if it is in playlist
     def stitch_together(self, title, playlistName=None):
-        if(playlistName != None): playlistName = "{}/".format(playlistName)
-        else: playlistName = ""
+        if (playlistName is not None):
+            playlistName = "{}/".format(playlistName)
+        else:
+            playlistName = ""
 
         os.system(
             "ffmpeg -i audio.mp3 -itsoffset 0 -i video.mp4 -acodec copy -vcodec copy -copyts ./videos/pray.mp4 >/dev/null 2>&1")
@@ -27,7 +31,7 @@ class ffmpeg:
             print("Already Directory")
         os.rename(
             "./videos/pray.mp4",
-            "./videos/" + playlistName + 
+            "./videos/" + playlistName +
             title.replace(
                 "(",
                 "").replace(

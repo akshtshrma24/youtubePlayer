@@ -1,13 +1,58 @@
+from os import system
 from subprocess import Popen, PIPE, STDOUT
 
-from directoryHandler import * 
-
-# Creates instance so only one instance is running at all times, to avoid multipled videos playing at once
-
-# Disable gc collect because seg faults occur after .stop and before media_new type methods
+from directoryHandler import *
 
 
 # plays the one song
-def play_vlc(file):
-    Popen(["vlc", "./videos/{}".format(file)], stdout=PIPE, stdin=PIPE, stderr=PIPE)
-    
+
+def play_song(file):
+    os.system("killall vlc")
+    Popen(["vlc", "./videos/{}".format(file)],
+          stdout=PIPE, stdin=PIPE, stderr=PIPE)
+
+
+# plays the playlist in an array
+
+def play_playlist(directory, songIndex):
+    songs = get_songs("./videos/{}".format(directory))
+    if(songIndex >= len(songs) or songIndex < 0): songIndex = 0
+
+    global currentDirectory
+    currentDirectory = directory
+
+    global currentSong
+    currentSong = songIndex
+
+    os.system("killall vlc")
+    while songIndex < len(songs):
+        play_song("{}/{}".format(directory, songs[songIndex]))
+        songIndex += 1
+        currentSong = songIndex
+
+# skips the song
+
+def next():
+    os.system("killall vlc")
+    try:
+        currentDirectory
+    except NameError:
+        print("Nothing playing", flush=True)
+    else:
+        play_playlist(currentDirectory, currentSong + 1)
+
+
+# goes back a song 
+
+def previous():
+    os.system("killall vlc")
+    try:
+        currentDirectory
+    except NameError:
+        print("Nothing playing", flush=True)
+    else:
+        play_playlist(currentDirectory, currentSong - 1)
+
+
+
+

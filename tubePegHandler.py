@@ -14,7 +14,7 @@ class tubePegHandler:
         raw_audio = dw.download_audio(link)
         return fg.convert_mp4_to_mp3(raw_audio)
 
-    #Downloads the video and stitches to mp3, saves in correct folder
+    # Downloads the video and stitches to mp3, saves in correct folder
     def download_video_merge(self, link, playlistName=None):
         dw.download_video(link)
         title = dw.get_title(link).replace("(", "").replace(")", "")

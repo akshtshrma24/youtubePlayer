@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request
 
-from mergeHandler import * 
-from directoryHandler import * 
-from vlcHandler import * 
+from mergeHandler import *
+from directoryHandler import *
+from vlcHandler import *
 
 app = Flask(__name__, template_folder="./frontend")
-
 
 
 @app.route('/')
@@ -20,23 +19,29 @@ def my_form_post():
     link = ""
     return hello_world()
 
+
 @app.route('/manage')
 def manage():
     dictionary = get_file_names()
     return render_template('manage.html', dictionary=dictionary)
 
+
 @app.route('/manage', methods=['POST'])
 def manage_video():
     dictionary = get_file_names()
-    if('delete_button' in request.form):
+    if ('delete_button' in request.form):
         fileName = request.form['delete_button']
         delete_file(fileName)
         return render_template('manage.html', dictionary=dictionary)
-    elif('play_button' in request.form):
+    elif ('play_button' in request.form):
         fileName = request.form['play_button']
-        play_vlc(fileName)
+        play_song(fileName)
         return render_template('manage.html', dictionary=dictionary)
-    else:
+    elif ('play_playlist_button' in request.form):
         fileName = request.form['play_playlist_button']
-        play_vlc(fileName)
+        play_playlist(fileName, 0)
         return render_template('manage.html', dictionary=dictionary)
+    elif ('previous_button' in request.form):
+        next()
+    elif ('next_button' in request.form):
+        previous()

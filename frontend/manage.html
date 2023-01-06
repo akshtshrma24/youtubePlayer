@@ -9,8 +9,10 @@
 </head>
 <body>
     <div>
-        <button class="previous round">&#8249;</button>
-        <button class="next round">&#8250;</button>
+        <form method="POST">
+            <button class="previous round" name="previous_button">&#8249;</button>
+            <button class="next round" name="next_button">&#8250;</button>
+        </form>
     </div>
     <div>
         {% for key in dictionary %}
