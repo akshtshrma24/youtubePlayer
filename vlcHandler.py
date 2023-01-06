@@ -2,6 +2,7 @@ from os import system
 from subprocess import Popen, PIPE, STDOUT
 
 from directoryHandler import *
+from logger import * 
 
 
 # plays the one song
@@ -37,8 +38,9 @@ def next():
     try:
         currentDirectory
     except NameError:
-        print("Nothing playing", flush=True)
+        error("Nothing playing")
     else:
+        warning("Next {}     current song + 1 {}".format(currentDirectory, currentSong + 1))
         play_playlist(currentDirectory, currentSong + 1)
 
 
@@ -49,8 +51,9 @@ def previous():
     try:
         currentDirectory
     except NameError:
-        print("Nothing playing", flush=True)
+        error("Nothing playing")
     else:
+        warning("Prev {}     current song - 1 {}".format(currentDirectory, currentSong - 1))
         play_playlist(currentDirectory, currentSong - 1)
 
 
