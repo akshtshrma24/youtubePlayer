@@ -19,6 +19,8 @@ def play_playlist(directory, songIndex):
     songs = get_songs("./videos/{}".format(directory))
     if(songIndex >= len(songs) or songIndex < 0): songIndex = 0
 
+    warning(songIndex)
+
     global currentDirectory
     currentDirectory = directory
 
