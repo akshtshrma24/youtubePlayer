@@ -8,6 +8,7 @@ from logger import *
 # plays the one song
 
 def play_song(file):
+    os.system("killall vlc")
     call(["vlc", "./videos/{}".format(file)],
           stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
@@ -27,7 +28,6 @@ def play_playlist(directory, songIndex):
     os.system("killall vlc")
     while songIndex < len(songs):
         play_song("{}/{}".format(directory, songs[songIndex]))
-        os.system("killall vlc")
         songIndex += 1
         currentSong = songIndex
 
