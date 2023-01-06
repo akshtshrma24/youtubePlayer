@@ -1,5 +1,5 @@
 from os import system
-from subprocess import Popen, PIPE, STDOUT
+from subprocess import call, PIPE, STDOUT
 
 from directoryHandler import *
 from logger import * 
@@ -8,8 +8,7 @@ from logger import *
 # plays the one song
 
 def play_song(file):
-    os.system("killall vlc")
-    Popen(["vlc", "./videos/{}".format(file)],
+    call(["vlc", "./videos/{}".format(file)],
           stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
 
@@ -28,6 +27,7 @@ def play_playlist(directory, songIndex):
     os.system("killall vlc")
     while songIndex < len(songs):
         play_song("{}/{}".format(directory, songs[songIndex]))
+        os.system("killall vlc")
         songIndex += 1
         currentSong = songIndex
 

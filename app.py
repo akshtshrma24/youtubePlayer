@@ -42,8 +42,8 @@ def manage_video():
         play_playlist(fileName, 0)
         return render_template('manage.html', dictionary=dictionary)
     elif ('previous_button' in request.form):
-        next()
+        previous()
         return render_template('manage.html', dictionary=dictionary)
     elif ('next_button' in request.form):
-        previous()
+        next()
         return render_template('manage.html', dictionary=dictionary)
