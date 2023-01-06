@@ -3,9 +3,6 @@
 export GREEN='\033[0;32m'
 export NC='\033[0m'
 
-echo "${GREEN}Reinstalling libqt5svg5${NC}"
-sudo apt install --reinstall libqt5svg5
-
 echo "${GREEN}Installing ffmpeg${NC}"
 sudo apt install ffmpeg
 
