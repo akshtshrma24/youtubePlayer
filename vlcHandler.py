@@ -29,7 +29,9 @@ def play_playlist(directory, songIndex):
 
     os.system("killall vlc")
     while songIndex < len(songs):
-        play_song("{}/{}".format(directory, songs[songIndex]))
+        os.system("killall vlc")
+        call(["vlc", "./videos/{}".format("{}/{}".format(directory, songs[songIndex]))],
+            stdout=PIPE, stdin=PIPE, stderr=PIPE)
         songIndex += 1
         currentSong = songIndex
 
