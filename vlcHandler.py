@@ -40,7 +40,7 @@ def next():
     except NameError:
         error("Nothing playing")
     else:
-        warning("Next {}     current song: {} current song after change: ".format(currentDirectory, currentSong, currentSong + 1))
+        warning("Next {}     current song: {} current song after change: {}".format(currentDirectory, currentSong, currentSong + 1))
         play_playlist(currentDirectory, currentSong + 1)
 
 
@@ -53,7 +53,7 @@ def previous():
     except NameError:
         error("Nothing playing")
     else:
-        warning("Prev {}     current song: {} current song after change: ".format(currentDirectory, currentSong, currentSong + 1))
+        warning("Prev {}     current song: {} current song after change: {}".format(currentDirectory, currentSong, currentSong + 1))
         play_playlist(currentDirectory, currentSong - 1)
 
 
