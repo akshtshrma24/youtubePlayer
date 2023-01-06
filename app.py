@@ -43,5 +43,7 @@ def manage_video():
         return render_template('manage.html', dictionary=dictionary)
     elif ('previous_button' in request.form):
         next()
+        return render_template('manage.html', dictionary=dictionary)
     elif ('next_button' in request.form):
         previous()
+        return render_template('manage.html', dictionary=dictionary)
