@@ -1,65 +1,76 @@
 from os import system
-from subprocess import call, PIPE, STDOUT
+from subprocess import check_call, PIPE, Popen
+import time
 
 from directoryHandler import *
 from logger import * 
 
-
-# plays the one song
-
-def play_song(file):
-    os.system("killall vlc")
-    call(["vlc", "./videos/{}".format(file)],
-          stdout=PIPE, stdin=PIPE, stderr=PIPE)
+class vlcHandler:
 
 
-# plays the playlist in an array
+    # Initialises vlcHandler object
 
-def play_playlist(directory, songIndex):
-    songs = get_songs("./videos/{}".format(directory))
-    if(songIndex >= len(songs) or songIndex < 0): songIndex = 0
+    def __init__(self):
+        self.index = 0
+        self.continuable = True
 
-    warning(songIndex)
 
-    global currentDirectory
-    currentDirectory = directory
+    def set_directory(self, directory):
+        self.directory = directory
 
-    global currentSong
-    currentSong = songIndex
+    # plays the one song
 
-    os.system("killall vlc")
-    while songIndex < len(songs):
+    def play_song(self, file):
         os.system("killall vlc")
-        call(["vlc", "./videos/{}".format("{}/{}".format(directory, songs[songIndex]))],
+        check_call(["vlc", "./videos/{}".format(file)],
             stdout=PIPE, stdin=PIPE, stderr=PIPE)
-        songIndex += 1
-        currentSong = songIndex
-
-# skips the song
-
-def next():
-    os.system("killall vlc")
-    try:
-        currentDirectory
-    except NameError:
-        error("Nothing playing")
-    else:
-        warning("Next {}     current song: {} current song after change: {}".format(currentDirectory, currentSong, currentSong + 1))
-        play_playlist(currentDirectory, currentSong + 1)
 
 
-# goes back a song 
+    # loops through the playlist and plays the songs
 
-def previous():
-    os.system("killall vlc")
-    try:
-        currentDirectory
-    except NameError:
-        error("Nothing playing")
-    else:
-        warning("Prev {}     current song: {} current song after change: {}".format(currentDirectory, currentSong, currentSong + 1))
-        play_playlist(currentDirectory, currentSong - 1)
+    def loop_through_playlist(self, songs):
+        warning(songs)
+        warning(self.index)
+        if(self.index >= len(songs) or self.index < 0): self.index = 0
+        self.continuable = True
+        while(self.index < len(songs) and self.continuable):
+            warning("starting {}".format(songs[self.index]))
+            Popen(["vlc", "--play-and-exit", "./videos/{}".format("{}/{}".format(self.directory, songs[self.index]))],
+                stdout=PIPE, stdin=PIPE, stderr=PIPE).wait()
+            error("Done with video")
+            os.system("killall vlc")
+            self.index += 1
 
+
+    # starts the playlist from an array
+
+    def start_playlist(self):
+        self.continuable = True
+        songs = get_songs("./videos/{}".format(self.directory))
+        self.index = 0
+        self.loop_through_playlist(songs)
+
+
+    # Goes to next song in playlist
+
+    def next(self):
+        self.continuable = False
+        songs = get_songs("./videos/{}".format(self.directory))
+        error(songs[self.index])
+        time.sleep(0.5)
+        self.loop_through_playlist(songs)
+
+
+    # Goes to previous song in playlist
+
+    def previous(self):
+        self.continuable = False
+        songs = get_songs("./videos/{}".format(self.directory))
+        self.index -= 2
+        error(songs[self.index])
+        time.sleep(0.5)
+        self.loop_through_playlist(songs)
+        
 
 
 
