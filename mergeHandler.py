@@ -4,6 +4,8 @@ import tubePegHandler
 from directoryHandler import *
 
 
+# downloads the files and merges the 2 files together
+
 def download_merge(link):
     if ("playlist" not in link):
         if (not is_in_videos(link)):

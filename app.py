@@ -3,10 +3,11 @@ from flask import Flask, render_template, request
 import vlcHandler
 from mergeHandler import *
 from directoryHandler import *
-from logger import * 
+from logger import *
 
 app = Flask(__name__, template_folder="./frontend")
 vlc = vlcHandler.vlcHandler()
+
 
 @app.route('/')
 def hello_world():
@@ -26,6 +27,7 @@ def manage():
     dictionary = get_file_names()
     return render_template('manage.html', dictionary=dictionary)
 
+
 @app.route('/manage', methods=['POST'])
 def manage_video():
     os.system("killall vlc")
@@ -42,13 +44,17 @@ def manage_video():
         vlc.start_playlist()
     return render_template('manage.html', dictionary=dictionary)
 
+
 @app.route('/player')
 def load_player():
     return render_template('player.html')
 
+
 @app.route('/player', methods=['POST'])
 def player_button():
     os.system("killall vlc")
-    if('previous_button' in request.form): vlc.previous()
-    else: vlc.next()
+    if ('previous_button' in request.form):
+        vlc.previous()
+    else:
+        vlc.next()
     return render_template('player.html')
