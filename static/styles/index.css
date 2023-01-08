@@ -43,12 +43,13 @@ a:hover {
 }
 
 .previous {
+    background: azure;
     color: black;
 }
 
 .next {
-    background: #04AA6D;
-    color: white;
+    background: azure;
+    color: black;
 }
 
 .round {
@@ -60,7 +61,7 @@ a:hover {
 }
 
 .round:hover {
-    background: #02734a;
+    background: gray;
 }
 
 .delete {
