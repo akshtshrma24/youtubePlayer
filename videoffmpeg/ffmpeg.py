@@ -1,17 +1,13 @@
 import os
+import time
 
+from logger import * 
 
 class ffmpeg:
 
     # Converts the given file to mp3, given file must be in mp4 format
     def convert_mp4_to_mp3(self, audio):
-        os.system(
-            "ffmpeg -i {} -vn -ab 128k -ar 44100 -y audio.mp3 >/dev/null 2>&1".format(
-                audio.replace(
-                    "(",
-                    "").replace(
-                    ")",
-                    "")))
+        os.system("ffmpeg -i audio.webm -vn -ab 128k -ar 44100 -y audio.mp3")
         os.system("rm -rf audio.webm")
         return "audio.mp3"
 
@@ -23,7 +19,8 @@ class ffmpeg:
             playlistName = ""
 
         os.system(
-            "ffmpeg -i audio.mp3 -itsoffset 0 -i video.mp4 -acodec copy -vcodec copy -copyts ./videos/pray.mp4 >/dev/null 2>&1")
+            "ffmpeg -i audio.mp3 -itsoffset 0 -i video.mp4 -acodec copy -vcodec copy -copyts ./videos/pray.mp4")
+        warning("check if pray.mp4")
         os.system("rm -rf audio.mp3 video.mp4")
         try:
             os.mkdir("./videos/" + playlistName)

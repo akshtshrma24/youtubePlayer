@@ -1,6 +1,6 @@
 import pytube
 
-import tubePegHandler
+import tubePegHandler as tubePegHandler
 from directoryHandler import *
 
 
