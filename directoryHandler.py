@@ -41,7 +41,7 @@ def delete_file(file):
     try:
         os.remove("./videos/{}".format(file))
     except OSError as error:
-        print(error)
+        os.rmdir("./videos/{}".format(file))
 
 
 # Returns an array of all the .mp4 files inside the
