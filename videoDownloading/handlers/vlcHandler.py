@@ -2,9 +2,7 @@ from os import system
 from subprocess import check_call, PIPE, Popen
 import time
 
-from handlers.directoryHandler import *
-from util.logger import *
-
+from videoDownloading.handlers.directoryHandler import *
 
 class vlcHandler:
 
@@ -27,13 +25,10 @@ class vlcHandler:
     # loops through the playlist and plays the songs
 
     def loop_through_playlist(self, songs):
-        warning(songs)
-        warning(self.index)
         if (self.index >= len(songs) or self.index < 0):
             self.index = 0
         self.continuable = True
         while (self.index < len(songs) and self.continuable):
-            warning("starting {}".format(songs[self.index]))
             Popen(["vlc",
                    "--play-and-exit",
                    "./videos/{}".format("{}/{}".format(self.directory,
@@ -41,7 +36,6 @@ class vlcHandler:
                   stdout=PIPE,
                   stdin=PIPE,
                   stderr=PIPE).wait()
-            error("Done with video")
             os.system("killall vlc")
             self.index += 1
 
@@ -58,7 +52,6 @@ class vlcHandler:
     def next(self):
         self.continuable = False
         songs = get_songs("./videos/{}".format(self.directory))
-        error(songs[self.index])
         time.sleep(0.5)
         self.loop_through_playlist(songs)
 
@@ -68,6 +61,5 @@ class vlcHandler:
         self.continuable = False
         songs = get_songs("./videos/{}".format(self.directory))
         self.index -= 2
-        error(songs[self.index])
         time.sleep(0.5)
         self.loop_through_playlist(songs)

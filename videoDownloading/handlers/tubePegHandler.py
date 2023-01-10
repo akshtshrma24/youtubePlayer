@@ -1,7 +1,7 @@
 import os
 
-import downloadFormating.downloader as downloader
-import downloadFormating.ffmpeg as ffmpeg
+import videoDownloading.downloadFormating.downloader as downloader
+import videoDownloading.downloadFormating.ffmpeg as ffmpeg
 
 dw = downloader.downloader()
 fg = ffmpeg.ffmpeg()

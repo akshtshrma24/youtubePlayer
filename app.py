@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 
-import handlers.vlcHandler as vlcHandler
-from handlers.mergeHandler import *
-from handlers.directoryHandler import *
+import videoDownloading.handlers.vlcHandler as vlcHandler
+from videoDownloading.handlers.mergeHandler import *
+from videoDownloading.handlers.directoryHandler import *
 from util.logger import *
+
 
 app = Flask(__name__, template_folder="./frontend")
 vlc = vlcHandler.vlcHandler()
