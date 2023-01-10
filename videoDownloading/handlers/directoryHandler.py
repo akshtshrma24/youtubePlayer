@@ -11,7 +11,7 @@ def is_in_videos(link, playlistName=None):
     else:
         playlistName = ""
     dw = downloader.downloader()
-    title = "./videos/" + playlistName + \
+    title = "./videoDownloading/videos/" + playlistName + \
         dw.get_title(link).replace("(", "").replace(")", "").replace(" ", "") + ".mp4"
     return os.path.isfile(title)
 
@@ -20,17 +20,17 @@ def is_in_videos(link, playlistName=None):
 
 def get_file_names():
     directories = []
-    for path in os.walk('./videos'):
+    for path in os.walk('./videoDownloading/videos'):
         directories.append(path)
     directories.pop(0)
     dictionary = {}
     for playListNames in directories:
-        dictionary[(playListNames[0]).replace("./videos/", "")] = []
+        dictionary[(playListNames[0]).replace("./videoDownloading/videos/", "")] = []
         for fullFileNames in playListNames:
             for fileNames in fullFileNames:
                 if (fileNames[0] != "[" and len(fileNames) != 1):
                     dictionary[(playListNames[0]).replace(
-                        "./videos/", "")].append(fileNames)
+                        "./videoDownloading/videos/", "")].append(fileNames)
 
     return dictionary
 
@@ -39,9 +39,9 @@ def get_file_names():
 
 def delete_file(file):
     try:
-        os.remove("./videos/{}".format(file))
+        os.remove("./videoDownloading/videos/{}".format(file))
     except OSError as error:
-        os.rmdir("./videos/{}".format(file))
+        os.rmdir("./videoDownloading/videos/{}".format(file))
 
 
 # Returns an array of all the .mp4 files inside the
