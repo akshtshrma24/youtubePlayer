@@ -21,6 +21,6 @@ echo "${GREEN}Making videos directory${NC}"
 
 cd ../videoDownloading ; mkdir videos > /dev/null 2>&1 ; cd ../
 
-export FLASK_APP=app.py
+export FLASK_APP=server.py
 
 python3 -m flask run -p 5001 --host=0.0.0.0

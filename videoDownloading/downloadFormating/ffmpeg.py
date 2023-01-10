@@ -21,7 +21,6 @@ class ffmpeg:
             playlistName = "{}/".format(playlistName)
         else:
             playlistName = ""
-
         os.system(
             "ffmpeg -i audio.mp3 -itsoffset 0 -i video.mp4 -acodec copy -vcodec copy -copyts ./videoDownloading/videos/pray.mp4 >/dev/null 2>&1")
         os.system("rm -rf audio.mp3 video.mp4")

@@ -5,7 +5,6 @@ from videoDownloading.handlers.mergeHandler import *
 from videoDownloading.handlers.directoryHandler import *
 from util.logger import *
 
-
 app = Flask(__name__, template_folder="./frontend")
 vlc = vlcHandler.vlcHandler()
 
