@@ -19,7 +19,7 @@ class VlcHandler:
 
     def play_song(self, file):
         os.system("killall vlc")
-        check_call(["vlc", "./videos/{}".format(file)],
+        check_call(["vlc", "./videoDownloading/videos/{}".format(file)],
                    stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
     # loops through the playlist and plays the songs
@@ -31,7 +31,7 @@ class VlcHandler:
         while (self.index < len(songs) and self.continuable):
             Popen(["vlc",
                    "--play-and-exit",
-                   "./videos/{}".format("{}/{}".format(self.directory,
+                   "./videoDownloading/videos/{}".format("{}/{}".format(self.directory,
                                         songs[self.index]))],
                   stdout=PIPE,
                   stdin=PIPE,
@@ -43,7 +43,7 @@ class VlcHandler:
 
     def start_playlist(self):
         self.continuable = True
-        songs = get_songs("./videos/{}".format(self.directory))
+        songs = get_songs("./videoDownloading/videos/{}".format(self.directory))
         self.index = 0
         self.loop_through_playlist(songs)
 
@@ -51,7 +51,7 @@ class VlcHandler:
 
     def next(self):
         self.continuable = False
-        songs = get_songs("./videos/{}".format(self.directory))
+        songs = get_songs("./videoDownloading/videos/{}".format(self.directory))
         time.sleep(0.5)
         self.loop_through_playlist(songs)
 
@@ -59,7 +59,7 @@ class VlcHandler:
 
     def previous(self):
         self.continuable = False
-        songs = get_songs("./videos/{}".format(self.directory))
+        songs = get_songs("./videoDownloading/videos/{}".format(self.directory))
         self.index -= 2
         time.sleep(0.5)
         self.loop_through_playlist(songs)
