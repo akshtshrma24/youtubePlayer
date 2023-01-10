@@ -1,6 +1,6 @@
 import os
 
-import downloader
+import downloadFormating.downloader as downloader
 
 
 # Returns true if the yotuuve video is already in videos/<playlistName>

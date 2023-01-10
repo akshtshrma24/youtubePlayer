@@ -2,8 +2,8 @@ from os import system
 from subprocess import check_call, PIPE, Popen
 import time
 
-from directoryHandler import *
-from logger import *
+from handlers.directoryHandler import *
+from util.logger import *
 
 
 class vlcHandler:

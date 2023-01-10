@@ -1,7 +1,7 @@
 import pytube
 
-import tubePegHandler
-from directoryHandler import *
+import handlers.tubePegHandler as tubePegHandler
+from handlers.directoryHandler import *
 
 
 # downloads the files and merges the 2 files together
