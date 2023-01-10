@@ -9,7 +9,7 @@ from videoDownloading.handlers.directoryHandler import *
 def download_merge(link):
     if ("playlist" not in link):
         if (not is_in_videos(link)):
-            tph = tubePegHandler.tubePegHandler()
+            tph = tubePegHandler.TubePegHandler()
             audio = tph.download_audio_convert(link)
             tph.download_video_merge(link)
     else:
@@ -17,6 +17,6 @@ def download_merge(link):
         for url in p.video_urls:
             name = p.title
             if (not is_in_videos(url, name)):
-                tph = tubePegHandler.tubePegHandler()
+                tph = tubePegHandler.TubePegHandler()
                 audio = tph.download_audio_convert(url)
                 tph.download_video_merge(url, name)

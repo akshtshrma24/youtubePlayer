@@ -4,7 +4,7 @@ import time
 
 from videoDownloading.handlers.directoryHandler import *
 
-class vlcHandler:
+class VlcHandler:
 
     # Initialises vlcHandler object
 

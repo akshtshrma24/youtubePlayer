@@ -7,7 +7,7 @@ dw = downloader.downloader()
 fg = ffmpeg.ffmpeg()
 
 
-class tubePegHandler:
+class TubePegHandler:
 
     # Downloads and converts the mp4 audio to mp3 audio, returns the file name
 
