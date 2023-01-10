@@ -23,4 +23,8 @@ cd ../videoDownloading ; mkdir videos > /dev/null 2>&1 ; cd ../
 
 export FLASK_APP=server.py
 
+docker compose up --build -d 
+
 python3 -m flask run -p 5001 --host=0.0.0.0
+
+docker compose down 
