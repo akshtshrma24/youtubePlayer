@@ -15,7 +15,8 @@ class ffmpeg:
         os.system("rm -rf audio.webm")
         return "audio.mp3"
 
-    # stitches the video and audio together if it is in playlist
+    # stitches the video and audio together places it in playlist if in a playlist otherwise 
+    # places in videos
     def stitch_together(self, title, playlistName=None):
         if (playlistName is not None):
             playlistName = "{}/".format(playlistName)
@@ -27,7 +28,7 @@ class ffmpeg:
         try:
             os.mkdir("./videoDownloading/videos/" + playlistName)
         except OSError as error:
-            print("Already Directory")
+            print("Directory Already Exists")
         os.rename(
             "./videoDownloading/videos/pray.mp4",
             "./videoDownloading/videos/" + playlistName +

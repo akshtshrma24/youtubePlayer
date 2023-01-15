@@ -1,4 +1,5 @@
 import os
+import shutil
 
 import videoDownloading.downloadFormating.downloader as downloader
 
@@ -11,9 +12,13 @@ def is_in_videos(link, playlistName=None):
     else:
         playlistName = ""
     dw = downloader.downloader()
-    title = "./videoDownloading/videos/" + playlistName + \
-        dw.get_title(link).replace("(", "").replace(")", "").replace(" ", "") + ".mp4"
-    return os.path.isfile(title)
+    videoTitle = dw.get_title(link).replace("(", "").replace(")", "").replace(" ", "") + ".mp4"
+    title = "./videoDownloading/videos/{}{}".format(playlistName, videoTitle)
+    if(os.path.isfile(title)):
+        return True
+    else:
+        print("Downloading: {}".format(title), flush=True)
+        return False
 
 
 # Returns a dictionary of all the playlists and the the songs inside of them
@@ -41,7 +46,7 @@ def delete_file(file):
     try:
         os.remove("./videoDownloading/videos/{}".format(file))
     except OSError as error:
-        os.rmdir("./videoDownloading/videos/{}".format(file))
+        shutil.rmtree("./videoDownloading/videos/{}".format(file))
 
 
 # Returns an array of all the .mp4 files inside the

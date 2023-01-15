@@ -1,19 +1,13 @@
-import time
+import threading
 
 from flask import Flask, render_template, request
-from prometheus_client import generate_latest, Gauge
 
 import videoDownloading.handlers.vlcHandler as vlcHandler
 from videoDownloading.handlers.mergeHandler import *
 from videoDownloading.handlers.directoryHandler import *
-import metricHandling.metrics as metricHandling
 
 app = Flask(__name__, template_folder="./frontend")
 vlc = vlcHandler.VlcHandler()
-metric = metricHandling.Metrics()
-
-# Prometheus metrics and variables
-download_time = Gauge('download_time', 'Time it took to download')
 
 
 @app.route('/')
@@ -24,10 +18,7 @@ def hello_world():
 @app.route('/', methods=['POST'])
 def my_form_post():
     link = request.form['text']
-    start = time.time()
-    download_merge(link)
-    download_time.set(time.time() - start)
-    metric.set_sent(False)
+    threading.Thread(target=download_merge, args=(link, )).start()
     return hello_world()
 
 
@@ -67,11 +58,3 @@ def player_button():
     else:
         vlc.next()
     return render_template('player.html')
-
-
-@app.route('/metrics')
-def metrics():
-    if (metric.get_sent()):
-        download_time.set(0)
-    metric.set_sent(True)
-    return generate_latest()

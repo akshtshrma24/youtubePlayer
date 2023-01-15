@@ -14,6 +14,7 @@ def download_merge(link):
             tph.download_video_merge(link)
     else:
         p = pytube.Playlist(link)
+        print("here")
         for url in p.video_urls:
             name = p.title
             if (not is_in_videos(url, name)):
