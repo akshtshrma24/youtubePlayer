@@ -23,7 +23,7 @@ class ffmpeg:
         else:
             playlistName = ""
         os.system(
-            "ffmpeg -i audio.mp3 -itsoffset 0 -i video.mp4 -acodec copy -vcodec copy -copyts ./videoDownloading/videos/pray.mp4 >/dev/null 2>&1")
+            "ffmpeg -i audio.mp3 -itsoffset 0 -i video.mp4 -acodec copy -vcodec copy -copyts ./videoDownloading/videos/pray.mp4 ")
         os.system("rm -rf audio.mp3 video.mp4")
         try:
             os.mkdir("./videoDownloading/videos/" + playlistName)
@@ -40,3 +40,4 @@ class ffmpeg:
                 " ",
                 "") +
             ".mp4")
+        return playlistName + title.replace("(","").replace(")","").replace(" ","") + ".mp4"
