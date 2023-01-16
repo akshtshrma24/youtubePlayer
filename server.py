@@ -1,12 +1,13 @@
+import threading
+
 from flask import Flask, render_template, request
 
-import vlcHandler
-from mergeHandler import *
-from directoryHandler import *
-from logger import *
+import videoDownloading.handlers.vlcHandler as vlcHandler
+from videoDownloading.handlers.mergeHandler import *
+from videoDownloading.handlers.directoryHandler import *
 
 app = Flask(__name__, template_folder="./frontend")
-vlc = vlcHandler.vlcHandler()
+vlc = vlcHandler.VlcHandler()
 
 
 @app.route('/')
@@ -17,8 +18,7 @@ def hello_world():
 @app.route('/', methods=['POST'])
 def my_form_post():
     link = request.form['text']
-    download_merge(link)
-    link = ""
+    threading.Thread(target=download_merge, args=(link, )).start()
     return hello_world()
 
 

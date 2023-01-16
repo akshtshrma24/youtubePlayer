@@ -1,8 +1,3 @@
-body {
-    margin-top: 20%;
-    background: #424343;
-    font-family: "Verdana", sans-serif;
-}
 
 .centerDiv {
     display:flex;
@@ -12,56 +7,6 @@ body {
 .secondCenterDiv {
     display:flex;
     justify-content: center;
-}
-
-.inputBox {
-    border: 0;
-    border-radius: 0;
-    border-width: 0;
-    height: 1.4rem;
-    margin-right: 0;
-    width: 25rem;
-}
-
-.submitButton {
-    background: black;
-    border-radius: 0;
-    border-width: 0;
-    border: 0;
-    height: 1.6rem;
-    margin-left: 0;
-}
-
-a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-}
-
-a:hover {
-    color: black;
-}
-
-.previous {
-    background: azure;
-    color: black;
-}
-
-.next {
-    background: azure;
-    color: black;
-}
-
-.round {
-    border-radius: 0;
-    border-width: 0;
-    border-color: none;
-    height: 2rem;
-    width: 2rem;
-}
-
-.round:hover {
-    background: gray;
 }
 
 .delete {
