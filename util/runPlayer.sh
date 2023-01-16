@@ -9,20 +9,20 @@ echo "${GREEN}Updating and upgrading apt-get${NC}"
 sudo apt-get update ; sudo apt-get upgrade
 
 echo "${GREEN}Installing ffmpeg${NC}"
-sudo apt install ffmpeg > /dev/null 2>&1
+sudo apt install --assume-yes ffmpeg 
 
 echo "${GREEN}Installing vlc${NC}"
-sudo apt install -y vlc > /dev/null 2>&1
+sudo apt install -y vlc 
 
 echo "${GREEN}Installing pip${NC}"
-sudo apt install python3-pip > /dev/null 2>&1
+sudo apt install --assume-yes python3-pip 
 
 echo "${GREEN}Installing requirements${NC}"
-pip3 install -r requirements.txt > /dev/null 2>&1
+pip3 install -r requirements.txt 
 
 echo "${GREEN}Making videos directory${NC}"
 
-cd ../videoDownloading ; mkdir videos > /dev/null 2>&1 ; cd ../
+cd ../videoDownloading ; mkdir videos  ; cd ../
 
 export FLASK_APP=server.py
 
