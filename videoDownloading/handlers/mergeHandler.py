@@ -17,7 +17,6 @@ def download_merge(link):
             tph = tubePegHandler.TubePegHandler()
             audio = tph.download_audio_convert(link)
             name = tph.download_video_merge(link)
-            # This should be moved out of this function, Will do make issue so dont forget
             threading.Thread(target=vlc.play_song, args=(name, )).start()
             time.sleep(2)
             delete_file(name)
