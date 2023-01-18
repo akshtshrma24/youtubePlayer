@@ -4,7 +4,6 @@ from flask import Flask, render_template, request
 
 import videoDownloading.handlers.vlcHandler as vlcHandler
 from videoDownloading.handlers.mergeHandler import *
-from videoDownloading.handlers.directoryHandler import *
 
 app = Flask(__name__, template_folder="./frontend")
 vlc = vlcHandler.VlcHandler()
@@ -42,6 +41,8 @@ def manage_video():
         fileName = request.form['play_playlist_button']
         vlc.set_directory(fileName)
         vlc.start_playlist()
+    elif ('stop_vlc_button' in request.form):
+        vlc.stop_vlc()
     return render_template('manage.html', dictionary=dictionary)
 
 

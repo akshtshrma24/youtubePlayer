@@ -11,6 +11,7 @@ class VlcHandler:
     def __init__(self):
         self.index = 0
         self.continuable = True
+        self.should_break = False
 
     def set_directory(self, directory):
         self.directory = directory
@@ -28,7 +29,10 @@ class VlcHandler:
         if (self.index >= len(songs) or self.index < 0):
             self.index = 0
         self.continuable = True
+        self.should_break = False
         while (self.index < len(songs) and self.continuable):
+            if(self.should_break):
+                break
             Popen(["vlc",
                    "--play-and-exit",
                    "./videoDownloading/videos/{}".format("{}/{}".format(self.directory,
@@ -63,3 +67,10 @@ class VlcHandler:
         self.index -= 2
         time.sleep(0.5)
         self.loop_through_playlist(songs)
+
+    # Stops the vlc process
+
+    def stop_vlc(self):
+        self.continuable = False
+        self.should_break = True
+        return True

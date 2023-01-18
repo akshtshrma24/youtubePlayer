@@ -27,8 +27,9 @@ def get_file_names():
     directories = []
     for path in os.walk('./videoDownloading/videos'):
         directories.append(path)
-    directories.pop(0)
     dictionary = {}
+    dictionary["singularVideos"] = directories[0][2]
+    directories.pop(0)
     for playListNames in directories:
         dictionary[(playListNames[0]).replace("./videoDownloading/videos/", "")] = []
         for fullFileNames in playListNames:
@@ -46,7 +47,12 @@ def delete_file(file):
     try:
         os.remove("./videoDownloading/videos/{}".format(file))
     except OSError as error:
-        shutil.rmtree("./videoDownloading/videos/{}".format(file))
+        try:
+            shutil.rmtree("./videoDownloading/videos/{}".format(file))
+        except:
+            for song in os.listdir("./videoDownloading/videos"):
+                if song.endswith(".mp4"):
+                    os.remove(os.path.join("./videoDownloading/videos", song))
 
 
 # Returns an array of all the .mp4 files inside the
