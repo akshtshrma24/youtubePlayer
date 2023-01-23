@@ -1,29 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'styles/index.css') }}">
-    <title>Past Link</title>
-</head>
-<body>
-    <div class="centerDiv">
-        <div>
-            <h2><a href="/manage" style="text-align: none; color: black;">Enter url</a></h2>
-        </div>
-    </div>
-    <div class="secondCenterDiv">
-        <form method="POST">
-            <input class="inputBox" name="text">
-            <input class="submitButton" type="submit">
-        </form>
-    </div>
-    <div class="secondCenterDiv">
-        <p>Check <a href="/manage" style="text-decoration: underline; color: black;">/manage</a> </p>
-    </div>
-    <div class="secondCenterDiv">
-        <p>Controls are at <a href="/player" style="text-decoration: underline; color: black;">/player</a> </p>
-    </div>
-</body>
-</html>
+
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="../static/styles/index.css">
+                <title>Past Link</title>
+            </head>
+            <body>
+                <div>
+                    <div>
+                        <h2>Enter url</h2>
+                    </div>
+                </div>
+                <div>
+                    <form method="POST">
+                        <input class="inputBox" name="text">
+                        <input class="submitButton" type="submit">
+                    </form>
+                </div>
+                <div class="shift">
+                    <form method="POST">
+                    <h2>singularVideos<input class="play" type="submit" name="play_playlist_button" value="singularVideos"> </h2> <h2>nujabes<input class="play" type="submit" name="play_playlist_button" value="nujabes"> </h2> <h3>Feather.mp4</h3><h3>Nujabes-JustForgetSamuraiChamplooOST.Track01.mp4</h3><h2>nujabesAndFellows<input class="play" type="submit" name="play_playlist_button" value="nujabesAndFellows"> </h2> <h3>Nujabes.mp4</h3><h3>Nujabes'LastSong-UnfinishedTrack.mp4</h3>
+                    </form>
+                </div>
+                <div>
+                    <form method="POST">
+                        <input class="previous round" type="submit" name="previous_button" value="←">
+                        <input class="next round" type="submit" name="next_button" value="→">
+                    </form>
+                </div>
+            </body>
+            </html>
+        
