@@ -27,9 +27,11 @@ class TestServerHandler(http.server.CGIHTTPRequestHandler):
             vlc.set_directory(text.split("=")[1])
             threading.Thread(target=vlc.start_playlist).start()
         elif("previous_button" in text):
-            vlc.previous()
+            threading.Thread(target=vlc.previous).start()
         elif("next_button" in text):
-            vlc.next()
+            threading.Thread(target=vlc.next).start()
+        elif("stop_button" in text):
+            threading.Thread(target=vlc.stop_vlc).start()
         else:
             threading.Thread(target=download_merge, args=(text[5:], )).start()
         if self.path == '/':

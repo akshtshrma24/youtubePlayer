@@ -38,6 +38,7 @@ def renderHtml():
                 <div>
                     <form method="POST">
                         <input class="previous round" type="submit" name="previous_button" value="←">
+                        <input class="next round" type="submit" name="stop_button" value="◼">
                         <input class="next round" type="submit" name="next_button" value="→">
                     </form>
                 </div>
