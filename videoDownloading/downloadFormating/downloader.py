@@ -22,5 +22,5 @@ class downloader:
     def download_video(self, link):
         YouTube(link).streams.filter(
             progressive=True,
-            file_extension='mp4').desc().first().download(filename="video.mp4")
+            file_extension='mp4').first().download(filename="video.mp4")
         return "video.mp4"
