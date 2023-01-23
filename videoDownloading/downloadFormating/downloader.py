@@ -17,7 +17,7 @@ class downloader:
             only_audio=True).desc().first().download(filename="audio.webm")
         return "audio.webm"
 
-    # Downloads the highest resolution Video returns the file Name
+    # Downloads the first resolution Video returns the file Name
 
     def download_video(self, link):
         YouTube(link).streams.filter(
