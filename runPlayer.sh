@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd ./util
-
 export GREEN='\033[0;32m'
 export NC='\033[0m'
 
@@ -18,14 +16,8 @@ echo "${GREEN}Installing pip${NC}"
 sudo apt install --assume-yes python3-pip 
 
 echo "${GREEN}Installing requirements${NC}"
-pip3 install -r requirements.txt 
+pip3 install pytube 
 
 echo "${GREEN}Making videos directory${NC}"
 
-cd ../videoDownloading ; mkdir videos  ; cd ../
-
-export FLASK_APP=server.py
-
-python3 -m flask run -p 5001 --host=0.0.0.0
-
-
+python3 server.py
