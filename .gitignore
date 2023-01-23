@@ -1,2 +1,5 @@
 # So you dont push videos 
 /videoDownloading/videos/
+
+.DS_Store
+.__pycache__
