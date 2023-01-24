@@ -4,8 +4,8 @@ export GREEN='\033[0;32m'
 export CYAN='\033[0;36m'
 export NC='\033[0m'
 
-printf "${GREEN}Updating and upgrading apt-get${NC}\n"
-sudo apt-get update ; sudo apt-get upgrade
+printf "${GREEN}Updating apt-get${NC}\n"
+sudo apt-get update 
 
 printf "${GREEN}Installing ffmpeg${NC}\n"
 sudo apt install --assume-yes ffmpeg 
