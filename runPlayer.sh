@@ -23,5 +23,5 @@ printf "${GREEN}Making videos directory${NC}\n"
 mkdir ./videoDownloading/videos
 
 printf  "${GREEN}Starting Server${NC}\n"
-printf "${CYAN}running on $(ip addr | grep 192 | awk '{print $2}' | cut -d '/' -f 1):8080 ${NC}\n"
+printf "${CYAN}running on https://$(ip addr | grep 192 | awk '{print $2}' | cut -d '/' -f 1):8080 ${NC}\n"
 python3 server.py
