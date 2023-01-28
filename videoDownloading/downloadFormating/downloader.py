@@ -5,12 +5,13 @@ from pytube import YouTube, exceptions
 
 class downloader:
 
-    # Gets the title of the youtube video, sometimes it fails retries until it gets it
+    # Gets the title of the youtube video, sometimes it fails retries until it
+    # gets it
 
     def get_title(self, link):
         while True:
             try:
-               title = YouTube(link).title
+                title = YouTube(link).title
             except exceptions.PytubeError:
                 continue
             break
@@ -19,7 +20,7 @@ class downloader:
     # Downloads the audio returns audio.mp4
 
     def download_audio(self, link):
-        
+
         YouTube(link).streams.filter(
             only_audio=True).desc().first().download(filename="audio.webm")
         return "audio.webm"

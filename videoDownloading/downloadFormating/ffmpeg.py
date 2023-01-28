@@ -15,7 +15,7 @@ class ffmpeg:
         os.system("rm -rf audio.webm")
         return "audio.mp3"
 
-    # stitches the video and audio together places it in playlist if in a playlist otherwise 
+    # stitches the video and audio together places it in playlist if in a playlist otherwise
     # places in videos
     def stitch_together(self, title, playlistName=None):
         if (playlistName is not None):
@@ -40,4 +40,5 @@ class ffmpeg:
                 " ",
                 "") +
             ".mp4")
-        return playlistName + title.replace("(","").replace(")","").replace(" ","") + ".mp4"
+        return playlistName + \
+            title.replace("(", "").replace(")", "").replace(" ", "") + ".mp4"
