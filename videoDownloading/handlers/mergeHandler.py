@@ -23,12 +23,10 @@ def download_merge(link):
             delete_file(name)
     else:
         p = pytube.Playlist(link)
-        print("here")
+        playlistName = p.title
+        delete_not_in_playlist(link, playlistName)
         for url in p.video_urls:
-            name = p.title
-            if (not is_in_videos(url, name)):
+            if (not is_in_videos(url, playlistName)):
                 tph = downloadPegHandler.TubePegHandler()
                 audio = tph.download_audio_convert(url)
-                tph.download_video_merge(url, name)
-            else:
-                print("alredy a thing", flush=True)
+                tph.download_video_merge(url, playlistName)

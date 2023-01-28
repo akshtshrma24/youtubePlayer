@@ -1,6 +1,6 @@
 import os
 
-from pytube import YouTube, exceptions
+from pytube import YouTube, exceptions, Playlist
 
 
 class downloader:
@@ -16,6 +16,15 @@ class downloader:
                 continue
             break
         return title
+
+    ## Returns the songs in the playlist in storable format
+
+    def get_playlist_songs(self, url):
+        songsInPlaylist = []
+        p = Playlist(url)
+        for url in p.video_urls:
+            songsInPlaylist.append(self.get_title(url).replace(" ", "").replace(")", "").replace("(", "") + ".mp4")
+        return songsInPlaylist
 
     # Downloads the audio returns audio.mp4
 

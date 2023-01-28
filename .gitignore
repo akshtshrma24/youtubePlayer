@@ -1,5 +1,6 @@
 # So you dont push videos 
 /videoDownloading/videos/
 
+# So you dont see irrelevant garbage
 .DS_Store
 .__pycache__

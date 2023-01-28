@@ -67,3 +67,16 @@ def get_songs(path):
         if (".mp4" not in element):
             mylist.remove(element)
     return mylist
+
+def delete_not_in_playlist(url, playlistName):
+    songsInDirectory = []
+    for t in os.walk("./videoDownloading/videos/{}/".format(playlistName)):
+        songsInDirectory = t[2]
+    
+    dw = downloader.downloader()
+    songsInPlaylist = dw.get_playlist_songs(url)
+    print(songsInDirectory)
+    print(songsInPlaylist)
+    for song in songsInDirectory:
+        if(song not in songsInPlaylist):
+            os.remove("./videoDownloading/videos/{}/{}".format(playlistName, song))
