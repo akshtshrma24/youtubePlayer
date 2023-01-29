@@ -13,4 +13,8 @@ allows for easy controlling with next, previous, and stop buttons </p>
     <li> Your weak device can run 24/7</li>
 </ul>
 
-<h2> Perfect for Raspberry Pis <h2>
+<h2> Perfect for:<h2>
+<ul>
+    <li> Raspberry Pi </li>
+    <li> Old TV </li>
+</ul>
