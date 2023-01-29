@@ -1,4 +1,4 @@
-### YouTube Player
+<h1> YouTube Player </h1>
 
 <h2> What is this? </h2>
 <p> Downloads youtube videos and makes it availble to play in playlist or singular songs
