@@ -3,7 +3,9 @@ import os
 
 class ffmpeg:
 
+
     # Converts the given file to mp3, given file must be in mp4 format
+
     def convert_mp4_to_mp3(self, audio):
         os.system(
             "ffmpeg -i {} -vn -ab 128k -ar 44100 -y audio.mp3 >/dev/null 2>&1".format(
@@ -15,8 +17,10 @@ class ffmpeg:
         os.system("rm -rf audio.webm")
         return "audio.mp3"
 
+
     # stitches the video and audio together places it in playlist if in a playlist otherwise
     # places in videos
+
     def stitch_together(self, title, playlistName=None):
         if (playlistName is not None):
             playlistName = "{}/".format(playlistName)

@@ -1,5 +1,3 @@
-import os
-
 from pytube import YouTube, exceptions, Playlist
 
 

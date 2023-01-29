@@ -12,3 +12,5 @@ allows for easy controlling with next, previous, and stop buttons </p>
     <li> Do not have products such as roku</li>
     <li> Your weak device can run 24/7</li>
 </ul>
+
+<h2> Perfect for Raspberry Pis <h2>
