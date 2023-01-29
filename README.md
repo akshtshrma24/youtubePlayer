@@ -3,6 +3,17 @@
 Downloads youtube videos and makes it availble to play in playlist or singular songs
 allows for easy controlling with next, previous, and stop buttons 
 
+## Installation
+The bash script, runPlayer.sh,  installs, sets up the directories, runs the process, and kills the processes when stopped
+
+Copy and Paste the following to install
+```bash 
+    git clone https://github.com/akshtshrma24/youtubePlayer.git 
+    cd youtubePlayer 
+    ./runPlayer.sh 
+```
+
+To Run the server again simply run `./runPlayer.sh` 
 
 ## Common Questions
 
@@ -19,16 +30,3 @@ If All of these Apply to you, it is useful
 
 * Raspberry Pi
 * Old TV
-
-
-## Installation
-The bash script, runPlayer.sh,  installs, sets up the directories, runs the process, and kills the processes when stopped
-
-Copy and Paste the following to install
-```bash 
-    git clone https://github.com/akshtshrma24/youtubePlayer.git 
-    cd youtubePlayer 
-    ./runPlayer.sh 
-```
-
-To Run the server again simply run `./runPlayer.sh` 
