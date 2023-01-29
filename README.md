@@ -1,4 +1,3 @@
-
 # YoutubePlayer
 
 Downloads youtube videos and makes it availble to play in playlist or singular songs
@@ -23,12 +22,13 @@ If All of these Apply to you, it is useful
 
 
 ## Installation
-Copy and Paste the following
+The bash script, runPlayer.sh,  installs, sets up the directories, runs the process, and kills the processes when stopped
+
+Copy and Paste the following to install
 ```bash 
     git clone https://github.com/akshtshrma24/youtubePlayer.git 
     cd youtubePlayer 
-    bash runPlayer.sh 
+    ./runPlayer.sh 
 ```
 
-The bash script installs, sets up the directories, runs the process, and kills the processes when stopped
-
+To Run the server again simply run `./runPlayer.sh` 
