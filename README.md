@@ -1,7 +1,7 @@
 <h1> YouTube Player </h1>
 
 <h2> Use Instructions </h2>
-<p> Simple clone, and inside the directory run ```./runPlayer.sh``` </p>
+Simple clone, and inside the directory run `./runPlayer.sh`
 
 
 <h2> What is this? </h2>
