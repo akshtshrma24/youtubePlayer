@@ -12,9 +12,12 @@ def is_in_videos(link, playlistName=None):
     else:
         playlistName = ""
     dw = downloader.downloader()
-    videoTitle = dw.get_title(link).replace("(", "").replace(")", "").replace(" ", "") + ".mp4"
+    videoTitle = dw.get_title(link).replace(
+        "(", "").replace(
+        ")", "").replace(
+            " ", "") + ".mp4"
     title = "./videoDownloading/videos/{}{}".format(playlistName, videoTitle)
-    if(os.path.isfile(title)):
+    if (os.path.isfile(title)):
         return True
     else:
         print("Downloading: {}".format(title), flush=True)
@@ -31,7 +34,8 @@ def get_file_names():
     dictionary["singularVideos"] = directories[0][2]
     directories.pop(0)
     for playListNames in directories:
-        dictionary[(playListNames[0]).replace("./videoDownloading/videos/", "")] = []
+        dictionary[(playListNames[0]).replace(
+            "./videoDownloading/videos/", "")] = []
         for fullFileNames in playListNames:
             for fileNames in fullFileNames:
                 if (fileNames[0] != "[" and len(fileNames) != 1):
@@ -49,7 +53,7 @@ def delete_file(file):
     except OSError as error:
         try:
             shutil.rmtree("./videoDownloading/videos/{}".format(file))
-        except:
+        except BaseException:
             for song in os.listdir("./videoDownloading/videos"):
                 if song.endswith(".mp4"):
                     os.remove(os.path.join("./videoDownloading/videos", song))
@@ -63,3 +67,16 @@ def get_songs(path):
         if (".mp4" not in element):
             mylist.remove(element)
     return mylist
+
+def delete_not_in_playlist(url, playlistName):
+    songsInDirectory = []
+    for t in os.walk("./videoDownloading/videos/{}/".format(playlistName)):
+        songsInDirectory = t[2]
+    
+    dw = downloader.downloader()
+    songsInPlaylist = dw.get_playlist_songs(url)
+    print(songsInDirectory)
+    print(songsInPlaylist)
+    for song in songsInDirectory:
+        if(song not in songsInPlaylist):
+            os.remove("./videoDownloading/videos/{}/{}".format(playlistName, song))

@@ -4,6 +4,9 @@ import time
 
 from videoDownloading.handlers.directoryHandler import *
 
+# This has to be a class due to the fact that managing the playlist 
+# requires an index to be shared accross multiple functions
+
 class VlcHandler:
 
     # Initialises vlcHandler object
@@ -31,12 +34,12 @@ class VlcHandler:
         self.continuable = True
         self.should_break = False
         while (self.index < len(songs) and self.continuable):
-            if(self.should_break):
+            if (self.should_break):
                 break
             Popen(["vlc",
                    "--play-and-exit",
                    "./videoDownloading/videos/{}".format("{}/{}".format(self.directory,
-                                        songs[self.index]))],
+                                                                        songs[self.index]))],
                   stdout=PIPE,
                   stdin=PIPE,
                   stderr=PIPE).wait()
@@ -47,7 +50,8 @@ class VlcHandler:
 
     def start_playlist(self):
         self.continuable = True
-        songs = get_songs("./videoDownloading/videos/{}".format(self.directory))
+        songs = get_songs(
+            "./videoDownloading/videos/{}".format(self.directory))
         self.index = 0
         self.loop_through_playlist(songs)
 
@@ -55,7 +59,8 @@ class VlcHandler:
 
     def next(self):
         self.continuable = False
-        songs = get_songs("./videoDownloading/videos/{}".format(self.directory))
+        songs = get_songs(
+            "./videoDownloading/videos/{}".format(self.directory))
         time.sleep(0.5)
         self.loop_through_playlist(songs)
 
@@ -63,7 +68,8 @@ class VlcHandler:
 
     def previous(self):
         self.continuable = False
-        songs = get_songs("./videoDownloading/videos/{}".format(self.directory))
+        songs = get_songs(
+            "./videoDownloading/videos/{}".format(self.directory))
         self.index -= 2
         time.sleep(0.5)
         self.loop_through_playlist(songs)
