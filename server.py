@@ -38,7 +38,7 @@ class TestServerHandler(http.server.CGIHTTPRequestHandler):
             file.seek(0)
             if(url not in file.read()):
                 file.write(url + "\n")
-            # threading.Thread(target=download_merge, args=(url, )).start()
+            threading.Thread(target=download_merge, args=(url, )).start()
             
         if self.path == '/':
             self.path = '/frontend/index.html'

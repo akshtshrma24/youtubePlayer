@@ -4,3 +4,6 @@
 # So you dont see irrelevant garbage
 .DS_Store
 .__pycache__
+
+# In case commit all, this should not be committed or pushed
+.playlists.txt

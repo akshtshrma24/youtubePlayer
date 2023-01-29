@@ -4,6 +4,8 @@ import time
 
 from videoDownloading.handlers.directoryHandler import *
 
+# This has to be a class due to the fact that managing the playlist 
+# requires an index to be shared accross multiple functions
 
 class VlcHandler:
 

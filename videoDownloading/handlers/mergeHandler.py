@@ -8,8 +8,8 @@ from videoDownloading.handlers.directoryHandler import *
 import videoDownloading.handlers.vlcHandler as vlcHandler
 from videoDownloading.handlers.directoryHandler import *
 
-# downloads the files and merges the 2 files together
 
+# downloads the files and merges the 2 files together
 
 def download_merge(link):
     if ("playlist" not in link):
