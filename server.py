@@ -45,5 +45,5 @@ class TestServerHandler(http.server.CGIHTTPRequestHandler):
         return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 
-test_server = http.server.HTTPServer(('0.0.0.0', 8080), TestServerHandler)
+test_server = http.server.HTTPServer(('0.0.0.0', 80), TestServerHandler)
 test_server.serve_forever()
